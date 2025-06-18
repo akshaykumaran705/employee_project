@@ -28,10 +28,12 @@ RUN pip install -r requirements.txt
 COPY . /code/
 
 # Add entrypoint
-COPY ./employee_project/entrypoint.sh
+# Add entrypoint
+COPY ./employee_project/entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
 # Expose port and start server
 EXPOSE 10000
-ENTRYPOINT ["/employee_project/entrypoint.sh"]
+ENTRYPOINT ["/entrypoint.sh"]
 CMD ["gunicorn", "employee_project.wsgi:application", "--bind", "0.0.0.0:10000"]
+
