@@ -290,13 +290,6 @@ employee_project/
 ├── docker-compose.yml (optional)
 └── README.md
 ```
-
----
-
-##  License
-
-This project is licensed under the **MIT License**.
-
 ---
 
 ##  Contact
