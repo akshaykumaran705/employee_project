@@ -16,7 +16,7 @@ RUN apt-get update && apt-get install -y \
 # Copy and install Python dependencies
 COPY requirements.txt /code/
 RUN pip install --upgrade pip
-RUN pip install -r requirements.txt
+RUN pip install -r employee_project/requirements.txt
 
 # Copy project files
 COPY . /code/
