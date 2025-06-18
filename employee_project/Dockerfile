@@ -8,16 +8,17 @@ ENV PYTHONUNBUFFERED 1
 WORKDIR /code
 
 # Install system dependencies
+# Install system dependencies
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
-    gcc \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+    build-essential \
     libpq-dev \
-    netcat \
+    netcat-openbsd \
     curl \
     ca-certificates \
     gnupg && \
-    apt-get clean && \
     rm -rf /var/lib/apt/lists/*
+
 
 # Install Python dependencies
 COPY ./employee_project/requirements.txt /code/
