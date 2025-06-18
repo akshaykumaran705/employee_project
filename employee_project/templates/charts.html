@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Charts</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>
+        .chart-container {
+            width: 50%; /* or try 300px */
+            margin: auto;
+        }
+      </style>
+</head>
+<body>
+    <h2>Employees per Department</h2>
+    <div class="chart-container">
+    <canvas id="departmentChart"></canvas>
+
+
+
+    <h2>Monthly Attendance Overview</h2>
+    <canvas id="attendanceChart"></canvas>
+    </div>
+    <script>
+        // Load data from Django context
+        const departmentData = {{ department_data|safe }};
+        const attendanceData = {{ attendance_data|safe }};
+
+        console.log("Department Data:", departmentData);
+        console.log("Attendance Data:", attendanceData);
+
+        // Pie Chart - Employees per Department
+        const deptLabels = departmentData.map(item => item['department__name'] || 'Unknown');
+        const deptCounts = departmentData.map(item => item['count']);
+
+        new Chart(document.getElementById('departmentChart'), {
+            type: 'pie',
+            data: {
+                labels: deptLabels,
+                datasets: [{
+                    label: 'Employees',
+                    data: deptCounts,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.6)',
+                        'rgba(54, 162, 235, 0.6)',
+                        'rgba(255, 206, 86, 0.6)',
+                        'rgba(75, 192, 192, 0.6)',
+                        'rgba(153, 102, 255, 0.6)'
+                    ]
+                }]
+            }
+        });
+
+        // Bar Chart - Attendance per Month
+        const attLabels = attendanceData.map(item => item['month']);
+        const attCounts = attendanceData.map(item => item['count']);
+
+        new Chart(document.getElementById('attendanceChart'), {
+            type: 'bar',
+            data: {
+                labels: attLabels,
+                datasets: [{
+                    label: 'Attendance Count',
+                    data: attCounts,
+                    backgroundColor: 'rgba(75, 192, 192, 0.6)'
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
