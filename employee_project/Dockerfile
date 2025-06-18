@@ -1,32 +1,37 @@
-# Base image
-FROM python:3.11
+FROM python:3.11-slim
 
-# Environment settings
+# Set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-# Set working directory
+# Set work directory
 WORKDIR /code
 
-# System dependencies
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    build-essential libpq-dev curl netcat && \
-    apt-get clean && rm -rf /var/lib/apt/lists/*
+# Install system dependencies
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    gcc \
+    libpq-dev \
+    netcat \
+    curl \
+    ca-certificates \
+    gnupg && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
-# Copy and install Python dependencies
-COPY employee_project/requirements.txt /code/
+# Install Python dependencies
+COPY requirements.txt /code/
 RUN pip install --upgrade pip
-RUN pip install -r employee_project/requirements.txt
+RUN pip install -r requirements.txt
 
 # Copy project files
 COPY . /code/
 
-# Copy and set entrypoint script
-COPY ./employee_project/entrypoint.sh /entrypoint.sh
+# Add entrypoint
+COPY ./entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
-# Expose Render-compatible port
+# Expose port and start server
 EXPOSE 10000
-
-# Run entrypoint which will call gunicorn
 ENTRYPOINT ["/entrypoint.sh"]
+CMD ["gunicorn", "employee_project.wsgi:application", "--bind", "0.0.0.0:10000"]
