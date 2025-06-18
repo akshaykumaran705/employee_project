@@ -1,5 +1,5 @@
 # Base image
-FROM python:3.11-slim
+FROM python:3.11
 
 # Environment settings
 ENV PYTHONDONTWRITEBYTECODE 1
@@ -9,9 +9,9 @@ ENV PYTHONUNBUFFERED 1
 WORKDIR /code
 
 # System dependencies
-RUN apt-get update && apt-get install -y \
-    libpq-dev gcc curl netcat && \
-    rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential libpq-dev curl netcat && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Copy and install Python dependencies
 COPY employee_project/requirements.txt /code/
