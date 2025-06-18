@@ -5,7 +5,7 @@ ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
 # Set working directory
-WORKDIR /code
+WORKDIR /code/employee_project
 
 # Install system dependencies
 RUN apt-get update && \
