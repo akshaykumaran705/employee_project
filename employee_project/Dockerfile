@@ -5,9 +5,8 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 # Set work directory
-WORKDIR /code/employee_project
+WORKDIR /code
 
-# Install system dependencies
 # Install system dependencies
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
@@ -19,22 +18,19 @@ RUN apt-get update && \
     gnupg && \
     rm -rf /var/lib/apt/lists/*
 
-
 # Install Python dependencies
-COPY ./requirements.txt /code/
+COPY employee_project/requirements.txt /code/
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
 # Copy project files
-COPY . /code/employee_project
+COPY employee_project /code/
 
-# Add entrypoint
-# Add entrypoint
-COPY ./employee_project/entrypoint.sh /entrypoint.sh
+# Copy entrypoint
+COPY employee_project/entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
-# Expose port and start server
+# Expose port and start app
 EXPOSE 10000
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["gunicorn", "employee_project.wsgi:application", "--bind", "0.0.0.0:10000"]
-
