@@ -1,10 +1,10 @@
-# 🧑‍💼 Employee Management System API
+#  Employee Management System API
 
 This is a backend application built using **Django** and **Django REST Framework** that provides RESTful APIs for managing employee data, departments, attendance, and performance metrics. The system is designed to be scalable, secure, and extensible with support for authentication, pagination, filtering, and more.
 
 ---
 
-## 📌 Project Overview
+##  Project Overview
 
 This Employee Management System allows organizations to track and manage their workforce efficiently through REST APIs. It is ideal for HR teams and administrators who need tools for:
 
@@ -23,9 +23,9 @@ The backend is powered by:
 
 ---
 
-## 🚀 Setup Instructions
+##  Setup Instructions
 
-### ✅ Prerequisites
+###  Prerequisites
 
 Before setting up the project, ensure you have the following installed:
 
@@ -36,7 +36,7 @@ Before setting up the project, ensure you have the following installed:
 
 ---
 
-### 🧱 Step-by-Step Setup
+###  Step-by-Step Setup
 
 #### 1. Clone the Repository
 
@@ -117,7 +117,7 @@ Visit: [http://localhost:8000/admin](http://localhost:8000/admin) to access the 
 
 ---
 
-## 🔐 Authentication Guide
+##  Authentication Guide
 
 This project supports:
 
@@ -150,7 +150,7 @@ All endpoints are prefixed with `/api/`.
 
 ---
 
-### 👤 Employees
+###  Employees
 
 | Method | Endpoint                | Description                       |
 |--------|-------------------------|-----------------------------------|
@@ -174,7 +174,7 @@ POST /api/employees/
 
 ---
 
-### 🏢 Departments
+###  Departments
 
 | Method | Endpoint                  | Description                    |
 |--------|---------------------------|--------------------------------|
@@ -186,7 +186,7 @@ POST /api/employees/
 
 ---
 
-### 📅 Attendance
+###  Attendance
 
 | Method | Endpoint                | Description                         |
 |--------|-------------------------|-------------------------------------|
@@ -206,7 +206,7 @@ POST /api/attendance/
 
 ---
 
-### 📈 Performance
+###  Performance
 
 | Method | Endpoint                  | Description                     |
 |--------|---------------------------|---------------------------------|
@@ -227,7 +227,7 @@ POST /api/performance/
 
 ---
 
-## 🔍 Filtering, Search, and Pagination
+##  Filtering, Search, and Pagination
 
 - Filter by field:  
   `/api/employees/?department=2`
@@ -240,7 +240,7 @@ POST /api/performance/
 
 ---
 
-## 🧪 Swagger Documentation (Optional)
+##  Swagger Documentation (Optional)
 
 If Swagger is set up using `drf-yasg`, access:
 
@@ -256,7 +256,7 @@ http://localhost:8000/redoc/
 
 ---
 
-## 🐳 Docker Setup (Optional)
+##  Docker Setup (Optional)
 
 If Docker support is enabled:
 
@@ -271,7 +271,7 @@ Make sure to:
 
 ---
 
-## 📁 Folder Structure Overview
+##  Folder Structure Overview
 
 ```
 employee_project/
@@ -293,13 +293,13 @@ employee_project/
 
 ---
 
-## 📄 License
+##  License
 
 This project is licensed under the **MIT License**.
 
 ---
 
-## ✉️ Contact
+##  Contact
 
 For questions, suggestions, or collaboration:
 
