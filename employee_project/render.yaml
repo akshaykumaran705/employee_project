@@ -1,0 +1,38 @@
+services:
+  - type: web
+    name: employee-app
+    env: python
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn employee_project.wsgi:application --bind 0.0.0.0:10000"
+    envVars:
+      - key: DEBUG
+        value: False
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DJANGO_ALLOWED_HOSTS
+        value: employee-app.onrender.com
+      - key: DB_NAME
+        fromDatabase:
+          name: employee-db
+          property: database
+      - key: DB_USER
+        fromDatabase:
+          name: employee-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: employee-db
+          property: password
+      - key: DB_HOST
+        fromDatabase:
+          name: employee-db
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: employee-db
+          property: port
+
+databases:
+  - name: employee-db
+    databaseName: employeedb
+    user: employeedb_user
