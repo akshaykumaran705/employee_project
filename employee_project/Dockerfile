@@ -28,7 +28,7 @@ RUN pip install -r requirements.txt
 COPY . /code/
 
 # Add entrypoint
-COPY ./entrypoint.sh /entrypoint.sh
+COPY ./employee_project/entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
 # Expose port and start server
