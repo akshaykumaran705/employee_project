@@ -20,7 +20,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # Install Python dependencies
-COPY requirements.txt /code/
+COPY ./employee_project/requirements.txt /code/
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
