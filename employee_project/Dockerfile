@@ -33,5 +33,5 @@ RUN chmod +x /entrypoint.sh
 
 # Expose port and start server
 EXPOSE 10000
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/employee_project/entrypoint.sh"]
 CMD ["gunicorn", "employee_project.wsgi:application", "--bind", "0.0.0.0:10000"]
