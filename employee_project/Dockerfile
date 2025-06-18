@@ -5,7 +5,7 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 # Set work directory
-WORKDIR /code
+WORKDIR /code/employee_project
 
 # Install system dependencies
 # Install system dependencies
@@ -26,7 +26,7 @@ RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
 # Copy project files
-COPY . /code/
+COPY . /code/employee_project
 
 # Add entrypoint
 # Add entrypoint
