@@ -22,7 +22,7 @@ RUN pip install -r requirements.txt
 COPY . /code/
 
 # Copy and set entrypoint script
-COPY ./entrypoint.sh /entrypoint.sh
+COPY ./employee_project/entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
 # Expose Render-compatible port
