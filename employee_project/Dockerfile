@@ -21,7 +21,7 @@ RUN apt-get update && \
 
 
 # Install Python dependencies
-COPY ./employee_project/requirements.txt /code/
+COPY ./requirements.txt /code/
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
